@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chatbot | CodingNepal</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Here - Eco-friendly Solutions</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #008cba;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 100px;
+            margin-right: 10px;
+        }
+
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        header nav a:hover {
+            background: #005f82;
+        }
+
+        header .login {
+            background: white;
+            color: #008cba;
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        header .login:hover {
+            background: #f0f0f0;
+        }
+
+        /* Popup Message */
+        .popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #005f82;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://i.ibb.co/cyk0Qgf/bgt.jpg') no-repeat center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .hero button {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            color: #008cba;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .features .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .features .feature {
+            flex: 1 1 calc(33% - 40px);
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .features .feature h3 {
+            color: #008cba;
+            margin-bottom: 10px;
+        }
+
+        /* Community Challenge Form */
+        .challenge-form {
+            background: #e6f7ff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .challenge-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .challenge-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .challenge-form form input,
+        .challenge-form form textarea,
+        .challenge-form form button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .challenge-form form button {
+            background: #008cba;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .challenge-form form button:hover {
+            background: #005f82;
+        }
+
+        /* Footer */
+        footer {
+            background: #008cba;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features .feature {
+                flex: 1 1 calc(100% - 40px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        /* Stats Section */
+.stats {
+    background-color: var(--light-gray);
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Services Section */
+.services {
+    padding: 4rem 0;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    width: 64px;
+    height: 64px;
+    background-color: #e2f5e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* CTA Section */
+.cta {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: 4rem 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--white);
+}
+
+/* Buttons */
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.cta-button-inverse {
+    background-color: var(--white);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button-inverse:hover {
+    background-color: #f3f4f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--white);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/7k4JQJV/TRASH-HERE-modified.png" alt="Trash Here Logo">
+            <h1>Trash Here</h1>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+        <a href="#login-section" class="login">Login</a>
+    </header>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">Welcome to Trash Here! Let's clean the planet together!</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Eco-Friendly Solutions for a Sustainable Future</h1>
+        <p>Join us in making the planet cleaner and greener.</p>
+        <button>Learn More</button>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Our Features</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>Easy Waste Collection</h3>
+                <p>Submit your waste effortlessly using our platform.</p>
+            </div>
+            <div class="feature">
+                <h3>Eco-Friendly Products</h3>
+                <p>Purchase products made with the planet in mind.</p>
+            </div>
+            <div class="feature">
+                <h3>Reward System</h3>
+                <p>Earn medals and redeem discounts for helping the environment.</p>
+            </div>
+        </div>
+    </section>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="5000">0</h3>
+                        <p>Tons of Waste Recycled</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="200">0</h3>
+                        <p>Partner Organizations</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-number" data-target="98">0</h3>
+                        <p>Recycling Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-recycle"></i>
+                        </div>
+                        <h3>Waste Collection</h3>
+                        <p>Regular and efficient waste collection services for residential and commercial areas.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-recycling"></i>
+                        </div>
+                        <h3>Recycling Solutions</h3>
+                        <p>State-of-the-art recycling facilities and programs for various types of waste.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="icon-energy"></i>
+                        </div>
+                        <h3>Energy Recovery</h3>
+                        <p>Converting waste to energy through advanced technological processes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Make a Difference?</h2>
+                <p>Join us in our mission to create a sustainable future.</p>
+                <button class="cta-button-inverse">Contact Us Today</button>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h4>EcoWaste</h4>
+                        <p>Creating a sustainable future through smart waste management solutions.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Waste Collection</a></li>
+                            <li><a href="#">Recycling</a></li>
+                            <li><a href="#">Energy Recovery</a></li>
+                            <li><a href="#">Consultancy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li>No,47 Sengunthar street</li>
+                            <li>kanchipuram,tamilnadu</li>
+                            <li>Phone: 9894224443</li>
+                            <li>Email: trashhere78@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- Community Challenge Form -->
+    <section class="challenge-form">
+        <h2>Join Our Weekly Challenges</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Why do you want to join?" rows="4" required></textarea>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <!-- Login Section -->
+    <div id="login-section">
+        <iframe src="signup (2).html" style="width: 100%; height: 100vh; border: none;"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Trash Here. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Show Popup on Load
+        window.onload = function () {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+
+            // Hide Popup after 5 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        };
+
+        // Scroll to Login Section
+        document.querySelector('.login').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('login-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        // Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+
+// Stats Animation
+const stats = document.querySelectorAll('.stat-number');
+
+const animateStats = () => {
+    stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        let current = 98;
+        const increment = target / 50; // Adjust for animation speed
+
+        const updateCount = () => {
+            if (current < target) {
+                current += increment;
+                stat.textContent = Math.ceil(current) + (target === 98 ? '%' : '+');
+                requestAnimationFrame(updateCount);
+            } else {
+                stat.textContent = target + (target === 98');
+            }
+        };
+
+        updateCount();
+    });
+};
+
+// Intersection Observer for Stats Animation
+const observerOptions = {
+    threshold: 0.5
+};
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateStats();
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe stats section
+const statsSection = document.querySelector('.stats');
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
+
+
+//
+    </script>
+     <button id="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-rounded">close</span>
+      </button>
+  
+      <div class="chatbot-popup">
+   
+        <div class="chat-header">
+          <div class="header-info">
+            <svg class="chatbot-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+              <path
+                d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+              />
+            </svg>
+            <h2 class="logo-text">TRASH ROBO</h2>
+          </div>
+          <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
+        </div>
+  
+  
+        <div class="chat-body">
+          <div class="message bot-message">
+            <svg class="bot-avatar" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 1024 1024">
+              <path
+                d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
+              />
+            </svg>
+      
+            <div class="message-text"> Hey there  <br /> How can I help you today? </div>
+          </div>
+        </div>
+  
+       
+        <div class="chat-footer">
+          <form action="#" class="chat-form">
+            <textarea placeholder="Message..." class="message-input" required></textarea>
+            <div class="chat-controls">
+              <button type="button" id="emoji-picker" class="material-symbols-outlined">sentiment_satisfied</button>
+              <div class="file-upload-wrapper">
+                <input type="file" accept="image/*" id="file-input" hidden />
+                <img src="#" />
+                <button type="button" id="file-upload" class="material-symbols-rounded">attach_file</button>
+                <button type="button" id="file-cancel" class="material-symbols-rounded">close</button>
+              </div>
+              <button type="submit" id="send-message" class="material-symbols-rounded">arrow_upward</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+   
+      <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+  
+      
+      <script src="script.js"></script>
+
+</body>
+</html>

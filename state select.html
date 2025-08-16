@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select State</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background:  url('https://i.ibb.co/31FNbZm/bgt.jpg') no-repeat center/cover;
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: white;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        .state-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .state-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        .state-card p {
+            font-size: 16px;
+            font-weight: bold;
+            color: #008cba;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select State</h1>
+    <div class="container">
+        <div class="state-card">
+            <img src="https://i.ibb.co/hYK123y/kerala.jpg" alt="Kerala Icon">
+            <p>KERALA</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/f0fGL57/chennai-large.jpg" alt="Tamil Nadu Icon">
+            <p>TAMILNADU</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/cJP7jj2/delhi.jpg" alt="DELHI" Icon">
+            <p>DELHI</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/KNNvMFw/ahamadabad.jpg" alt="Ahmedabad Icon">
+            <p>AHMEDABAD</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/kSK3zLS/hydrabad.jpg" alt="Telangana Icon">
+            <p>TELANGANA</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/kHKLQKw/mumbai.jpg" alt="Maharashtra Icon">
+            <p>MAHARASHTRA</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/XzrRFgc/kolkata.jpg" alt="Kolkata Icon">
+            <p>KOLKATA</p>
+        </div>
+        <div class="state-card">
+            <img src="https://i.ibb.co/YTTrJcY/lucknow.jpg" alt="Lucknow Icon">
+            <p>LUCKNOW</p>
+        </div>
+    </div>
+</body>
+</html>

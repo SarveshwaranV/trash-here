@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: rgb(28, 27, 27);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("bgt.jpg"); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.7); 
+            border-radius: 10px;
+        }
+
+        .logo img {
+            width: 125px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #22abd5;
+            margin: 20px 0 10px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .form-section {
+            padding: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #22abd5;
+            color: #030303;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background: #efefed;
+        }
+
+        .link {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            color: #1e819e;
+        }
+
+        .switch-section {
+            margin-top: 20px;
+        }
+
+        .switch-section p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .btn-switch {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #22abd5;
+            color: #030303;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-switch:hover {
+            background: #efefed;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container" class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="TRASH HERE - Copy.jpg" alt="TRASH HERE Logo"> 
+        </div>
+
+        <!-- Title Section -->
+        <h1>TRASH HERE</h1>
+        <p class="tagline">REDUCE REUSE RECYCLE</p>
+
+        <!-- Login Form Section -->
+        <div class="form-section">
+            <form action="indiv and bulk.html" method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <a href="#" class="link">Forgot Password?</a>
+        </div>
+
+        <!-- Switch to Signup -->
+        <div class="switch-section">
+            <p>Or continue with</p>
+            <a href="#signup-container" class="btn-switch">Sign Up</a>
+        </div>
+    </div>
+
+    <div id="signup-container" class="container" style="display: none;">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="TRASH HERE - Copy.jpg" alt="TRASH HERE Logo"> 
+        </div>
+
+        <!-- Title Section -->
+        <h1>Sign Up</h1>
+
+        <!-- Sign-Up Form Section -->
+        <div class="form-section">
+            <form>
+                <div class="input-group">
+                    <label for="name">Enter Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" placeholder="Enter your mobile number" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" placeholder="Create your password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Switch to Login -->
+        <div class="switch-section">
+            <p>Already have an account?</p>
+            <a href="#login-container" class="btn-switch">Login</a>
+        </div>
+    </div>
+
+    <script>
+        const loginContainer = document.getElementById('login-container');
+        const signupContainer = document.getElementById('signup-container');
+
+        document.querySelectorAll('.btn-switch').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href');
+                if (target === '#signup-container') {
+                    loginContainer.style.display = 'none';
+                    signupContainer.style.display = 'block';
+                } else {
+                    signupContainer.style.display = 'none';
+                    loginContainer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+

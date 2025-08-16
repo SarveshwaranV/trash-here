@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        :root {
+            --primary: #008cba;
+            --secondary: #008cba;
+            --accent: #008cba;
+            --success: #008cba;
+            --error: #008cba;
+            --text-primary: #333;
+            --text-secondary: #666;
+        }
+
+        body {
+            background:  url('https://i.ibb.co/cyk0Qgf/bgt.jpg') no-repeat center/cover;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255,255,255,0.1) 0,
+                rgba(255,255,255,0.1) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 80px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .section h2 {
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(107,79,255,0.1);
+            background: white;
+        }
+
+        .location-input {
+            display: flex;
+            align-items: center;
+            background: #f8fafc;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            padding: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .location-input:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(107,79,255,0.1);
+            background: white;
+        }
+
+        .location-input i {
+            padding: 0 15px;
+            color: var(--text-secondary);
+            font-size: 20px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .fancy-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fancy-checkbox:hover {
+            background: #f0f4f8;
+        }
+
+        .fancy-checkbox input {
+            display: none;
+        }
+
+        .checkbox-custom {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e1e1e1;
+            border-radius: 6px;
+            margin-right: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .fancy-checkbox input:checked + .checkbox-custom {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .fancy-checkbox input:checked + .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .upload-area {
+            border: 3px dashed rgba(107,79,255,0.3);
+            border-radius: 15px;
+            padding: 50px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .upload-area:hover {
+            background: rgba(107,79,255,0.05);
+            border-color: var(--accent);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .upload-subtext {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .place-order-btn {
+            background: linear-gradient(135deg, var(--accent), #008cba);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: #008cba;
+        }
+
+        .place-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: #008cba;
+        }
+
+        .place-order-btn:active {
+            transform: translateY(0);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-item {
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+        }
+
+        .nav-item.active i {
+            transform: translateY(-5px);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-item.active::after {
+            width: 20px;
+        }
+
+        .preview-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .preview-image {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-image .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--error);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--error);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .container {
+                margin-top: -30px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>TRASH HERE</h1>
+        <p>REDUCE • REUSE • RECYCLE</p>
+    </div>
+
+    <div class="container">
+        <div class="section" id="locationSection">
+            <h2>Location</h2>
+            <div class="location-input">
+                <i>Location</i>
+                <input type="text" placeholder="Enter your address" class="input-field">
+            </div>
+        </div>
+
+        <div class="section" id="confirmationSection">
+            <h2>Confirmations</h2>
+            <div class="checkbox-container">
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="clean">
+                    <span class="checkbox-custom"></span>
+                    <span>My garbage is clean and properly maintained</span>
+                </label>
+                <label class="fancy-checkbox">
+                    <input type="checkbox" name="sorted">
+                    <span class="checkbox-custom"></span>
+                    <span>My garbage is accurately sorted into different categories</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="section" id="wasteSection">
+            <h2>Waste Details</h2>
+            <div class="input-group">
+                <select class="input-field" id="wasteType">
+                    <option value="">Select type of waste</option>
+                    <option value="plastic">Plastic Waste</option>
+                    <option value="paper">Paper & Cardboard</option>
+                    <option value="metal">Metal & Electronics</option>
+                    <option value="organic">Organic Waste</option>
+                    <option value="glass">Glass</option>
+                    <option value="other">Other Materials</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <input type="number" placeholder="Volume in KG" class="input-field" id="wasteVolume">
+            </div>
+        </div>
+
+        <div class="section" id="uploadSection">
+            <h2>Upload Photos</h2>
+            <div class="upload-area" id="dropZone">
+                <div class="upload-icon">📸</div>
+                <p class="upload-text">Drag & drop your photos here</p>
+                <p class="upload-subtext">or click to browse • Maximum 5 photos</p>
+            </div>
+            <div class="preview-images" id="previewContainer"></div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="uploadProgress"></div>
+            </div>
+        </div>
+
+        <button class="place-order-btn" id="orderBtn">Place an Order</button>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item">
+            <i>👤</i>
+            Profile
+        </a>
+       
